@@ -1,0 +1,26 @@
+clc;clearvars;close all;
+load('scenario_01');
+for i = 1:size(scenario.posX,2)
+    for j = 1:size(scenario.posX,1)
+        ex  = cos(scenario.psi(j,i));
+        ey = sin(scenario.psi(j,i));
+        exOrtho=ex*cos(pi/2)+ey*sin(pi/2);
+        eyOrtho=-ex*sin(pi/2)+ey*cos(pi/2);
+        scenario.bboxX(j,i,3)=scenario.posX(j,i)+ex*scenario.vehLength(j,i)/2+...
+            scenario.vehWidth(j,i)/2*exOrtho;
+        scenario.bboxY(j,i,3)=scenario.posY(j,i)+ey*scenario.vehLength(j,i)/2+...
+            scenario.vehWidth(j,i)/2*eyOrtho;
+        scenario.bboxX(j,i,4)=scenario.posX(j,i)+ex*scenario.vehLength(j,i)/2-...
+            scenario.vehWidth(j,i)/2*exOrtho;
+        scenario.bboxY(j,i,4)=scenario.posY(j,i)+ey*scenario.vehLength(j,i)/2-...
+            scenario.vehWidth(j,i)/2*eyOrtho;
+        scenario.bboxX(j,i,2)=scenario.posX(j,i)-ex*scenario.vehLength(j,i)/2+...
+            scenario.vehWidth(j,i)/2*exOrtho;
+        scenario.bboxY(j,i,2)=scenario.posY(j,i)-ey*scenario.vehLength(j,i)/2+...
+            scenario.vehWidth(j,i)/2*eyOrtho;
+        scenario.bboxX(j,i,1)=scenario.posX(j,i)-ex*scenario.vehLength(j,i)/2-...
+            scenario.vehWidth(j,i)/2*exOrtho;
+        scenario.bboxY(j,i,1)=scenario.posY(j,i)-ey*scenario.vehLength(j,i)/2-...
+            scenario.vehWidth(j,i)/2*eyOrtho;
+    end
+end
