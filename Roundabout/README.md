@@ -20,7 +20,7 @@ The source code for the extraction and generation of predicted Occupancy Grid Ma
 1. **Prerequisites**  
    - Matlab (tested on v2023.b)
    - Python (3.12)
-   - Tensorflow (2.8) and related libraries (Refer to [requirements.txt](requirements.txt))
+   - Tensorflow and related libraries (Refer to [requirements.txt](requirements.txt))
 2. **Usage**  
    - Navigate to the folder [dataExtraction](dataExtraction/).
    - Run the script `extractData.m` in the Matlab environment.
